@@ -1,0 +1,9 @@
+# Ignore the raw data file
+data/df_raw.csv
+
+# Ignore gen/temp folder
+gen/temp
+
+# Ignore .Rhistory and .Rproj
+*.Rhistory
+*.Rproj.user/
