@@ -21,6 +21,7 @@ Since movies are experience goods, consumers face information asymmetry because 
 - **Data collection**: Web scraping and Kaggle downloads.
 - **Sample**: 2468 movies released between 2000 and 2020.
 - **Model**: Log-linear regression with standardized predictors.
+- **Operationalization**: Star power was operationalized as the average per-film earnings of the four main actors, while genre familiarity was quantified using the relative frequency of genres across films.
   
 ---
 
@@ -34,6 +35,29 @@ ln(OpeningRevenueᵢ) = β₀ + β₁·ln(StarPowerᵢ) + β₂·GenreFamiliarit
 ---
 
 ## Findings
+
+###  Regression Estimates of Log Opening Weekend Revenue
+
+| Variable              | Model 1                 | Model 2                 | Model 3                 | Model 4                 |
+| --------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| **Intercept**         | 15.741\*\*\*<br>(0.033) | 15.580\*\*\*<br>(0.059) | 15.747\*\*\*<br>(0.033) | 15.737\*\*\*<br>(0.033) |
+| **Log Star Power**    | 0.231\*\*\*<br>(0.039)  | 0.198\*\*\*<br>(0.039)  | 0.188\*\*\*<br>(0.043)  | 0.221\*\*\*<br>(0.037)  |
+| **Genre Familiarity** | 0.033<br>(0.035)        | 0.048<br>(0.035)        | 0.023<br>(0.035)        | 0.041<br>(0.034)        |
+| **Interaction**       | -0.075\*<br>(0.029)     | -0.063\*<br>(0.029)     | -0.068.<br>(0.038)      | -0.083\*\*<br>(0.028)   |
+| **Log Budget**        | 1.091\*\*\*<br>(0.053)  | 1.098\*\*\*<br>(0.054)  | 1.128\*\*\*<br>(0.053)  | 1.132\*\*\*<br>(0.048)  |
+| **Critic Ratings**    | -0.252\*\*\*<br>(0.032) | -0.264\*\*\*<br>(0.032) | -0.229\*\*\*<br>(0.032) | -0.246\*\*\*<br>(0.032) |
+| **Late 2000s**        |                         | -0.061<br>(0.091)       |                         |                         |
+| **Early 2010s**       |                         | 0.193\*<br>(0.089)      |                         |                         |
+| **Late 2010s**        |                         | 0.616\*\*\*<br>(0.086)  |                         |                         |
+| **Observations**      | 2,472                   | 2,458                   | 2,472                   | 2,469                   |
+| **R²**                | 0.374                   | 0.390                   | 0.370                   | 0.382                   |
+| **Adjusted R²**       | 0.373                   | 0.388                   | 0.369                   | 0.380                   |
+| **F-statistic**       | 295.0\*\*\*             | 195.9\*\*\*             | 290.0\*\*\*             | 303.8\*\*\*             |
+
+> Note: Robust standard errors in parentheses.  
+> Significance levels: *** p < 0.001, ** p < 0.01, * p < 0.05, . p < 0.1  
+> Model 2 includes 5-year period dummies (reference: early 2000s).
+
 
 - The strongest and most significant predictor in the model is the log-transformed, standardized production budget. A 1% increase in the standardized production budget is associated with a 1.091% increase in opening weekend revenue (p-value < 2.2e-16), holding other factors constant.
 - Log-transformed, standardized star power is also a strong predictor of opening weekend revenue. A 1% increase in standardized star power leads to a 0.231% increase in opening weekend revenue (p-value = 3.79e-09), holding other factors constant.
